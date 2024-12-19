@@ -37,11 +37,6 @@ To redefine the shopping experience by fostering collaboration among businesses 
 ---
 
 ## 🏆 Join the Team
-Are you passionate about innovation in retail technology? We'd love to hear from you! Reach out via [LinkedIn](https://linkedin.com/in/ujjwal-dubey) or submit a PR.
-
----
-
-## 📫 Contact
-For inquiries, please reach out at **[your-email@example.com](ujjwal07dubey@gmail.com)**. 
+Are you passionate about innovation in retail technology? We'd love to hear from you! Reach out via [LinkedIn](https://www.linkedin.com/in/ujjwal-dubey-667909255/) or submit a PR.
 
 ---
