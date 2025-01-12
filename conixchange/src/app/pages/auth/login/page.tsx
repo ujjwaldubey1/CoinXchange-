@@ -7,18 +7,16 @@ const LoginPage = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  // Handle the login form submission
   const handleLogin = async (credentials) => {
     setLoading(true);
     setError(null);
     try {
-      const response = await axios.post("http://localhost:3000/api/auth/login", credentials);
+      const response = await axios.post("http://localhost:3000/auth/login", credentials);
       const { result, token } = response.data;
 
-      // Store the token securely
       localStorage.setItem("token", token);
 
-      // Redirect or perform post-login actions
+    
       console.log("Login successful:", result);
       alert(`Welcome back, ${result.email}!`);
     } catch (err) {

@@ -14,15 +14,6 @@ const Signup = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
-  const fields = [
-    { name: "name", type: "text", placeholder: "Name" },
-    { name: "email", type: "email", placeholder: "Email" },
-    { name: "password", type: "password", placeholder: "Password" },
-    { name: "StoreName", type: "text", placeholder: "Store Name" },
-    { name: "StoreAddress", type: "text", placeholder: "Store Address" },
-    { name: "PhoneNumber", type: "text", placeholder: "Phone Number" },
-  ];
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -32,7 +23,7 @@ const Signup = () => {
     setError("");
     setSuccess("");
     try {
-      const response = await axios.post("../api/auth/login", formData);
+      const response = await axios.post("/auth/signup", formData); 
       setSuccess("User created successfully!");
     } catch (err) {
       setError(err.response?.data?.message || "Something went wrong");
@@ -42,14 +33,25 @@ const Signup = () => {
   return (
     <div className="max-w-md mx-auto p-8 bg-white rounded-lg shadow-lg">
       <h2 className="text-3xl font-semibold text-center text-gray-800 mb-6">Signup</h2>
-      
-      {/* Error and Success Messages */}
+
       {error && <p className="text-red-500 text-center">{error}</p>}
       {success && <p className="text-green-500 text-center">{success}</p>}
 
-      {/* Form Fields */}
-      <form onSubmit={(e) => { e.preventDefault(); handleSubmit(); }} className="space-y-4">
-        {fields.map((field) => (
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleSubmit();
+        }}
+        className="space-y-4"
+      >
+        {[
+          { name: "name", type: "text", placeholder: "Name" },
+          { name: "email", type: "email", placeholder: "Email" },
+          { name: "password", type: "password", placeholder: "Password" },
+          { name: "StoreName", type: "text", placeholder: "Store Name" },
+          { name: "StoreAddress", type: "text", placeholder: "Store Address" },
+          { name: "PhoneNumber", type: "text", placeholder: "Phone Number" },
+        ].map((field) => (
           <div key={field.name}>
             <label className="block text-gray-700 font-medium">{field.placeholder}</label>
             <input
@@ -64,7 +66,6 @@ const Signup = () => {
           </div>
         ))}
 
-        {/* Submit Button */}
         <button
           type="submit"
           className="w-full p-3 mt-4 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
